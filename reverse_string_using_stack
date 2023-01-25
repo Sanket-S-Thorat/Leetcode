@@ -1,0 +1,15 @@
+import stack_implementation_array as s
+
+def reverse_str(str1, st):
+    for i in str1:
+        st.push(i)
+
+    out = ""
+    while(not st.isEmpty()):
+        out += st.get_top()
+        st.pop()
+
+    return out
+
+
+print(reverse_str('Sanket', s.stack(6)))

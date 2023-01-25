@@ -1,0 +1,18 @@
+# Make a note of minimum product and maximum product while traversing and return maximum of both.
+
+
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        curr_min = curr_max = 1
+        res = float('-inf')
+        
+        for i in nums:
+            mini = i * curr_min
+            maxi = i * curr_max
+            curr_min = min(i, maxi, mini)
+            curr_max = max(i, maxi, mini)
+            
+            res = max(res, curr_max)
+        return res
+            
+# for pictorial representation: https://leetcode.com/problems/maximum-product-subarray/discuss/2223390/Python-oror-T.C.-:-O(n)-oror-Aux.-Space-:-O(1)            

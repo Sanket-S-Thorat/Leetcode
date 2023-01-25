@@ -1,0 +1,12 @@
+# While traversing make a note of sum upto current ptr./element and max sum upto same.
+# Also when the current sum is less than the pointing element, make current sum equal to the element itself.
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        max_sum, curr_sum = float('-inf'), 0
+        
+        for i in range(len(nums)):
+            curr_sum += nums[i]
+            if curr_sum < nums[i]: curr_sum = nums[i]
+            max_sum = max(max_sum, curr_sum)
+        return max_sum

@@ -1,0 +1,42 @@
+class stack:
+    def __init__(self, size):
+        self.top = 0
+        self.size = size
+        self.arr = [None]*self.size
+
+    def isEmpty(self):
+        if len(self.arr) == 0: return True
+        return False
+
+    def push(self, element):
+        if self.top >= self.size:
+            raise OverflowError
+        else:
+            self.arr[self.top] = element
+            self.top += 1
+
+    def pop(self):
+        if self.isEmpty(): return -1
+        else:
+            popper = self.arr[-1]
+            del(self.arr[-1])
+        return popper
+
+    def get_top(self):
+        return self.arr[self.top-1]
+
+    def peek(self):
+        return len(self.arr)
+
+    def print_stack(self):
+        print(self.arr)
+
+if __name__ == "__main__":
+    s = stack(3)
+    s.print_stack()
+    s.push(1)
+    s.push(1)
+    s.push(1)
+    print(s.peek())
+    print(s.get_top())
+    s.print_stack()

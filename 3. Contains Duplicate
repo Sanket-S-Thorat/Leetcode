@@ -1,0 +1,19 @@
+# Create a hasmap and map values as Number in list --> Index.
+# If the number in list already exists in the hashmap, return True or else return False at the end of the array traversal
+# Aux. Space = O(n) and Time Complexity: O(n)
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        hashmap = {}
+        for i in range(len(nums)):
+            if nums[i] in hashmap : return True
+            else: hashmap[nums[i]] = i
+        return False
+
+#Using inbult methods.
+#Check the length of the list and its set and return True if both not same.
+#Time Complexity : O(n logn), Space Complexity : O(1)
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+		return len(set(nums)) != len(nums)

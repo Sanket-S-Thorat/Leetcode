@@ -1,0 +1,34 @@
+## https://www.codingninjas.com/codestudio/problems/delete-middle-element-from-stack_985246?leftPanelTab=1
+def solve(input, num, N):
+    if(num == N//2):
+        input.pop()
+        return
+    x = input.pop()
+    solve(input, num+1, N)
+    input.push(x)
+    
+def deleteMiddle(inputStack, N):
+
+    # Write your solution here
+    i = inputStack
+    solve(i, 0, N)
+    
+    
+    
+## CPP
+void solve(stack<int>&inputStack,int num, int N){
+    if(num == N/2){
+        inputStack.pop();
+        return;
+    }
+    int x = inputStack.top();
+    inputStack.pop();
+    solve(inputStack, num+1, N);
+    inputStack.push(x);
+}
+
+void deleteMiddle(stack<int>&inputStack, int N){
+	
+   // Write your code here
+   solve(inputStack, 0, N);
+}

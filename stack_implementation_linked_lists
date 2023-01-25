@@ -1,0 +1,103 @@
+class Node:
+    def __init__(self,value, next_node = None, prev_node = None):
+        self.next = next_node
+        self.prev = prev_node
+        self.data = value
+
+class linkedList:
+    def __init__(self, data = None):
+        self.head = None
+        self.tail = None
+
+        if data is not None:
+            return self.add_multiple_nodes(data)
+
+    def add_node(self, value):
+        if self.head is None:
+            self.head = self.tail = Node(value)
+        else:
+            self.tail.next = Node(value)
+            self.tail = self.tail.next
+        return self.tail
+
+    def add_multiple_nodes(self, data):
+        for i in data:
+            self.add_node(i)
+
+    def add_at_head(self, value):
+        if self.head is None:
+            self.head = self.tail = Node(value)
+        else:
+            self.head = Node(value, self.head)
+
+    def add_at_posi(self, value, position):
+        if self.head is None:
+            self.head = self.tail = Node(value)
+        else:
+            prev = None
+            curr = self.head
+            for i in range(position-1):
+                prev = curr
+                curr = curr.next
+
+            curr = Node(value, curr, prev)
+
+    def remove_at_head(self):
+        if self.head is None:
+            return -1
+        else:
+            rem = self.head
+            self.head = self.head.next
+            del rem
+
+    def remove_at_posi(self, position):
+        if self.head is None:
+            return -1
+        else:
+            prev = None
+            curr = self.head
+            for i in range(position - 1):
+                prev = nxt
+                curr = curr.next
+                nxt = curr.next.next
+
+            prev.next = nxt
+            del curr
+
+class stack:
+    def __init__(self, head, size):
+        self.top = -1
+        self.size = size
+        self.head = head
+
+    def isEmpty(self):
+        if self.top == -1:
+            return True
+        return False
+
+    def push(self, element):
+        if self.top >= self.size:
+            raise OverflowError
+        else:
+            self.head.add_at_head(self, element)
+            self.top += 1
+
+    def pop(self):
+        if self.isEmpty(): return -1
+        else:
+            popper = self.head
+            self.head.remove_at_head()
+            self.top -= 1
+        return popper.data
+
+    def get_top(self):
+        return self.head.data
+
+    def peek(self):
+        return self.top
+
+    def print_stack(self):
+        curr = self.head
+        while(curr.next):
+            print(curr.data)
+            curr = curr.next

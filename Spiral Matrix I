@@ -1,0 +1,21 @@
+# Q: Given an m x n matrix, return all elements of the matrix in spiral order.
+
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        r, c = len(matrix), len(matrix[0])
+        out = [None]*(r*c)
+        
+        dir = [(0,1), (1,0), (0,-1), (-1,0)]
+        d = 0
+        x, y = 0, 0
+        
+        for i in range(r*c):
+            out[i] = matrix[x][y]
+            matrix[x][y] = float('-inf')
+            nx, ny = dir[d][0]+x, dir[d][1]+y
+            if nx<0 or nx>=r or ny<0 or ny>=c or matrix[nx][ny] == float('-inf'):
+                d = (d+1)%4
+                nx, ny = dir[d][0]+x, dir[d][1]+y
+            x, y = nx, ny
+        return out
+                

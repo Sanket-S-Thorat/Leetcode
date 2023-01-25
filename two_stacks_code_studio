@@ -1,0 +1,51 @@
+//https://www.codingninjas.com/codestudio/problems/two-stacks_983634?leftPanelTab=1
+
+class TwoStack {
+    int size, top, top2, *arr;
+public:
+
+    // Initialize TwoStack.
+    TwoStack(int s) {
+        // Write your code here.
+        this -> size = s;
+        arr = new int[s];
+        top = -1;
+        top2 = s;
+    }
+    
+    // Push in stack 1.
+    void push1(int num) {
+        // Write your code here.
+        if(top2 - top > 1){
+            arr[++top] = num;
+        }
+    }
+
+    // Push in stack 2.
+    void push2(int num) {
+        // Write your code here.
+        if(top2 - top > 1){
+            arr[--top2] = num;
+        }
+    }
+
+    // Pop from stack 1 and return popped element.
+    int pop1() {
+        // Write your code here.
+        if(top != -1){
+            int ans = arr[top--];
+            return ans;
+        }
+        return -1;
+    }
+
+    // Pop from stack 2 and return popped element.
+    int pop2() {
+        // Write your code here.
+        if(top2 != size ){
+            int ans = arr[top2++];
+            return ans;
+        }
+        return -1;
+    }
+};

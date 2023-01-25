@@ -1,0 +1,9 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit, min1 = 0, prices[0]
+        for i in prices[1:]:
+            if i < min1: min1 = i
+            profit = max(profit, i - min1)
+        return profit
+        
+# Make note of minimum value for the subarray upto current point and also note down the maximum possible profit from upto it        

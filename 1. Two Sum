@@ -1,0 +1,13 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        
+        hashmap = {}
+        for i in range(len(nums)):
+            hashmap[nums[i]] = i
+
+        for i in range(len(nums)):
+            diff = target - nums[i]
+            
+            if diff in hashmap and hashmap[diff] != i: return [hashmap[diff], i]
+            
+# use hashmap as checker for diff in values of TARGET and Current element. also check if the diff is not equal to current pointer

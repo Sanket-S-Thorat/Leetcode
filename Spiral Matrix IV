@@ -1,0 +1,30 @@
+# Q: Linked list to spiral matrix
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def spiralMatrix(self, r: int, c: int, head: Optional[ListNode]) -> List[List[int]]:
+        out = [[-1]*c for _ in range(r)]
+        
+        dir = [(0,1), (1,0), (0,-1),(-1,0)]
+        d = 0
+        x, y = 0, 0
+        
+        current = head
+        while current:
+            out[x][y] = current.val
+            
+            current = current.next
+            if current is None: break
+            
+            nx, ny = dir[d][0] + x, dir[d][1] + y
+            
+            if nx < 0 or nx >= r or ny < 0 or ny >= c or out[nx][ny] != -1:
+                d = (d + 1) % 4
+                nx, ny = dir[d][0] + x, dir[d][1] + y
+            x, y = nx, ny
+            
+        return out
